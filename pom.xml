@@ -46,23 +46,10 @@
 
 
                         <configuration>
-                            <!-- for parallel running Cucumber-->
-                            <parallel>methods</parallel> <!--  methods, classes   -->
-                            <useUnlimitedThreads>true</useUnlimitedThreads>
-
-                            <threadCount>2</threadCount>
-                            <perCoreThreadCount>false</perCoreThreadCount>
-                            <forkCount>2C</forkCount>
-
-                            <!-- for  run class or classes-->
                             <includes>
                                 <include>**/CucumberRunner.java</include>
                                 <!-- since it is regression profile it included regressin runner -->
                             </includes>
-                            <excludes>
-                                <!--  not failedrunner included.      -->
-
-                            </excludes>
                             <testFailureIgnore>true</testFailureIgnore>
                         </configuration>
 
