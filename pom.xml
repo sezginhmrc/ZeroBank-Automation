@@ -14,7 +14,7 @@
 
 
 
-    <!-- Java Version Issue -->
+    <!--  to compile source code of project  -->
     <properties>
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
@@ -22,7 +22,11 @@
     </properties>
 
 
-        <build>
+
+
+
+     <!-- Compile the application sources -->
+    <build>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -34,27 +38,55 @@
                     </configuration>
                 </plugin>
 
+
                 <plugin>
-                    <!-- this plugin used to run project tests which allows us to configure xml suites   -->
+                    <!-- it allows us to execute speified test runner class or classes   -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M4</version>
 
-
                     <configuration>
-                        <parallel>methods</parallel> <!--  methods, classes   -->
-                        <useUnlimitedThreads>true</useUnlimitedThreads>  <!-- to be able to allow multiple threads in run    -->
+                        <!-- paralle execution in methods  -->
+                        <parallel>classes</parallel> <!--  methods, classes   -->
+                        <useUnlimitedThreads>true</useUnlimitedThreads>
 
                         <threadCount>2</threadCount>
                         <perCoreThreadCount>false</perCoreThreadCount>
                         <forkCount>2C</forkCount>
 
                         <includes>
-                            <include>**/*SmokeTestRunner.java</include>
+                            <include>**/CucumberRunner.java</include>
+
                         </includes>
                         <testFailureIgnore>true</testFailureIgnore>
                     </configuration>
 
+                </plugin>
+
+
+
+                <!--  Cucumber Cool Html Plugin      -->
+                <plugin>
+                    <groupId>net.masterthought</groupId>
+                    <artifactId>maven-cucumber-reporting</artifactId>
+                    <version>4.5.0</version>
+                    <executions>
+                        <execution>
+                            <id>execution</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <projectName>Cucumber HTML Reports</projectName>
+                                <outputDirectory>${project.build.directory}</outputDirectory>
+                                <inputDirectory>${project.build.directory}</inputDirectory>
+                                <jsonFiles>
+                                    <param>**/cucumber*.json</param>
+                                </jsonFiles>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
 
             </plugins>

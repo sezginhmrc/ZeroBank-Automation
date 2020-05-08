@@ -18,6 +18,7 @@ public class ConfigurationReader {
             FileInputStream input = new FileInputStream(path);
             // it will read the data from file
             // it is checke exeption had to handle it with try catch
+            configFile = new Properties();
             configFile.load(input);
             input.close();
         } catch (Exception e ){

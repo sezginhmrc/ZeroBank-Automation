@@ -12,15 +12,17 @@ import org.junit.runner.RunWith;
 @CucumberOptions(           //  defining cucumber test parameters
                              // we can specify here location of step definitions and feature file
                              // we can also specify tags as to be able run specific scenarios
+                             // atributes as a parameter defined here to execute test scenarios
 
-        glue = "src/test/java/com/zerobank/stepdefinitions",// PATH FOR STEP DEFINITIONS
-        features = "src/test/resources/feature",            // PATH FOR FEATURE DIRECTORY
-        dryRun = true,                                      // ALLOWS CUCUMBER TO GENEREATE STEP_DEFINITIONS IN OUTPUT
+        glue = "com/zerobank/stepdefinitions",                    // PATH FOR STEP DEFINITIONS
+        features = "src/test/resources",            // PATH FOR FEATURE DIRECTORY
+        dryRun = false,                                      // ALLOWS CUCUMBER TO GENEREATE STEP_DEFINITIONS IN OUTPUT
                                                             // TO MAKE SURE EVERY STEP HAS CODE IMPLEMNATATION
         strict = false,
-        tags = "@Login_Feature",
-        plugin = {
-
+        tags = "@AA",                                    // to be able to run speficif test scenarios as a tag ignore others
+                                                           // or not @tag execute all of them not only speficifed tag
+        plugin = {"html:target/default-report",
+                "json:target/cucumber-report.json"
         }
 
 
@@ -29,5 +31,5 @@ import org.junit.runner.RunWith;
 // this CukesRunner class allows us to kick off cucumber test
 // by providing  paths through cucumber options.
 // what features you wwant to test
-public class CukesRunner {
+public class CucumberRunner {
 }

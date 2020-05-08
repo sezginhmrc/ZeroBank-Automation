@@ -46,7 +46,7 @@ public class Driver {
                 WebDriverManager.getInstance(SafariDriver.class).setup();
                 driver = new SafariDriver();
             } else {
-                throw new RuntimeException("Invalud browser name");
+                throw new RuntimeException("Invalid browser name");
             }
         }
         return driver;

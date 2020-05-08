@@ -1,4 +1,4 @@
-@Login_Feature
+@L
 Feature: Login
   As i user i should be able to login to the application
 
@@ -7,21 +7,21 @@ Feature: Login
 
 
   @Positive_Scenario
-  Scenario: Log in with valid crendentials and verify Account summary page displayed
-    When user logs in as authorized user
-    Then user should verify Account summary page is displayed
+  Scenario: Log in as an authorized user
+    When user logs in as "authorized-user" into application
+    Then user should verify that user on Account summary page displayed on "Dashboard" page
 
 
-  @Negative_scenario
+  @Negative_Scenario1
   Scenario: Log in with invalid credentials and verify user not able to login
-    When user logs in with random credentials
+    When user logs in as "non-authorized-user" into application
     Then user should verify that error message displayed
 
 
-  @Scenario_SkipLogin
+  @Negative_Scenario2
   Scenario: Login without entering credentials
-    When user logins without credentials
-    Then user should verify that eror message displayed
+    When user logs in as "blank-username" into application
+    Then user should verify that error message displayed
 
 
 
