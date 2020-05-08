@@ -25,7 +25,7 @@ public class Navigation extends BasePage {
 
     @Override
     public void clickButton(String button) {
-
+        BrowserMethods.wait(2);
         button = button.toUpperCase();
         switch (button) {
             case "SAVINGS":
@@ -43,7 +43,8 @@ public class Navigation extends BasePage {
             case "LOAN":
                 loan.click();
             default:
-                Assert.fail("There are no such " + button + " available in switch statement ");
+            BrowserMethods.wait(2);
+             //   Assert.fail("There are no such " + button + " available in switch statement ");
         }
     }
     public void scrollDownPage(){
