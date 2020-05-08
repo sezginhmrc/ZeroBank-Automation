@@ -25,7 +25,7 @@
 
 
         <profile>
-            <id>Functional</id>
+            <id>Smoke</id>
             <build>
                 <plugins>
                     <plugin>
