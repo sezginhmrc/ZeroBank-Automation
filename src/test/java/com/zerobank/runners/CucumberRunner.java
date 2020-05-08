@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
         dryRun = false,                                      // ALLOWS CUCUMBER TO GENEREATE STEP_DEFINITIONS IN OUTPUT
                                                             // TO MAKE SURE EVERY STEP HAS CODE IMPLEMNATATION
         strict = false,
-        tags = "@L",                                    // to be able to run speficif test scenarios as a tag ignore others
+        tags = "",                                    // to be able to run speficif test scenarios as a tag ignore others
                                                            // or not @tag execute all of them not only speficifed tag
         plugin = {"html:target/default-report",
                 "json:target/cucumber-report.json"
