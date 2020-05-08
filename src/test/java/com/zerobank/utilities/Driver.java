@@ -33,7 +33,9 @@ public class Driver {
             String browser = ConfigurationReader.getProperty("browser").toLowerCase();
             if ("chrome".equals(browser)) {
                 WebDriverManager.chromedriver().version("81").setup();
-                driver = new ChromeDriver();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--start-maximized");
+                driver = new ChromeDriver(chromeOptions);
             } else if ("chromeheadless".equals(browser)) {
                 WebDriverManager.chromedriver().version("81").setup();
                 ChromeOptions options = new ChromeOptions();

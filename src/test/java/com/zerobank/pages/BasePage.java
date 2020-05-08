@@ -1,6 +1,7 @@
 package com.zerobank.pages;
 
 import com.zerobank.utilities.BrowserMethods;
+import com.zerobank.utilities.CommonMethods;
 import com.zerobank.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.swing.*;
 
-public class BasePage {
+public class BasePage implements CommonMethods {
 
     protected WebDriver driver = Driver.getDriver();
     protected WebDriverWait wait = new WebDriverWait(driver,30);

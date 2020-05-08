@@ -1,7 +1,9 @@
 package com.zerobank.pages;
 
 import com.zerobank.utilities.BrowserMethods;
-import com.zerobank.utilities.Driver;
+
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,9 +27,69 @@ public class Dashboard extends BasePage {
     @FindBy(linkText = "Account Activity")
     private WebElement accountAcitivity;
 
+    @FindBy(id = "sp_amount")
+    private WebElement amount;
+
+    @FindBy (id = "sp_date")
+    private  WebElement date ;
+
+    @FindBy(id = "ui-datepicker-div")
+    private WebElement popUpWindow;
+
+    @FindBy(xpath = "//a[text()='1']")
+    private WebElement chooseDate;
+
+    @FindBy(id = "sp_description")
+    private WebElement description;
+
+    @FindBy(id = "pay_saved_payees")
+    private WebElement payButton;
+
+    @FindBy(xpath = "//div[@id=\"alert_container\"]/*[2]/*[1]")
+    private WebElement paymentSuccesMessage ;
+    ////div[@id="alert_container"]/*[2]/*[1]
 
 
 
+    public void selectPaymentCard(String card){
+        BrowserMethods.wait(2);
+        Select select = new Select(driver.findElement(By.id("sp_payee")));
+        select.selectByVisibleText(card);
+    }
+    public void selectAccountType(String type){
+        BrowserMethods.wait(2);
+        Select select = new Select(driver.findElement(By.id("sp_account")));
+        select.selectByVisibleText(type);
+    }
+    public void enterAmount(String amount1){
+       BrowserMethods.wait(2);
+        amount.sendKeys(amount1);
+        BrowserMethods.wait(2);
+    }
+
+    public void selectDate(String date1){
+        BrowserMethods.wait(3);
+        date.click();
+        wait.until(ExpectedConditions.visibilityOf(popUpWindow));
+        chooseDate.click();
+        BrowserMethods.wait(2);
+    }
+    public void enterDescription(String desc){
+        BrowserMethods.wait(2);
+        wait.until(ExpectedConditions.visibilityOf(description)).sendKeys(desc);
+    }
+    public void clickPayButton(){
+        wait.until(ExpectedConditions.visibilityOf(payButton)).click();
+    }
+
+    public String paymentSucces(){
+        return paymentSuccesMessage.getText();
+    }
+
+    public String popupErrorMessage(){
+      return amount.getAttribute("validationMessage");
+
+    }
 
     public String selectedOption(){
         Select select = new Select(driver.findElement(By.id("aa_accountId")));
@@ -55,7 +117,6 @@ public class Dashboard extends BasePage {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//thead)[3]//tr//th")));
         return BrowserMethods.getTextFromWebElements(creditAccountsTitles);
     }
-
 
 
 
