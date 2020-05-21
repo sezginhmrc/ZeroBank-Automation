@@ -24,7 +24,7 @@ Feature: Account Activity module
     Then   account drop down menu should have following options
       | Savings     |
       | Checking    |
-      | Savings       |
+      | Savings     |
       | Loan        |
       | Credit Card |
       | Brokerage   |
