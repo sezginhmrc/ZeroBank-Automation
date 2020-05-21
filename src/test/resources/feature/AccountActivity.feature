@@ -17,13 +17,14 @@ Feature: Account Activity module
     When   user navigates to "Account Activity" page
     Then   account type should be "Savings"
 
-  @AA3
+  @AA3 @TC138
   Scenario:Account type dropdowns
     Given  user logs in as "authorized-user" into application
     When   user navigates to "Account Activity" page
     Then   account drop down menu should have following options
       | Savings     |
       | Checking    |
+      | Savings       |
       | Loan        |
       | Credit Card |
       | Brokerage   |
